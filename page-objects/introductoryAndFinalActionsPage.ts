@@ -17,9 +17,11 @@ export class IntroductoryAndFinalActionsPage extends HelperBase{
     this.suggestedActionsRightArrow = page.locator('[class="react-film__flipper react-film__main__overlay react-film__flipper--right"]');
   }
 
-  async verifyNewRequest(suggestedActionButtons: [], ) {
-    await expect(this.newRequestMessage).toBeVisible();
+  async verifyNewRequestMessage(){
+        expect(this.newRequestMessage).toBeVisible();
+    }
 
+  async verifySuggestedActionsLists(suggestedActionButtons: string[]) {
     for (let suggestedAction of suggestedActionButtons) {
       console.log(`Searching: ${suggestedAction}`);
       this.actionForSuggestedActionButtons.filter({hasText: suggestedAction});
@@ -42,5 +44,6 @@ export class IntroductoryAndFinalActionsPage extends HelperBase{
       }
     }
   }
+
 
 }

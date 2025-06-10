@@ -41,29 +41,10 @@ test.describe('External chatbot automated tests', () => {
   });
 
   test('First actions verification', async ({page}) => {
+    const pm = new PageManager(page);
     const firstActions = ['Our Services', 'Pricing', 'Contact & Location', 'Our Team', 'Who we are', 'Our History'];
 
-    for (const actionF of firstActions) {
-      console.log(`Searching: ${actionF}`);
-      const action = page.locator('.react-film__filmstrip .webchat__suggested-actions__item-box').filter({hasText: actionF});
-
-      if (await action.isVisible()) {
-        console.log(`Found (direct): ${actionF}`);
-        await expect(action).toBeVisible();
-        continue;
-      }
-
-      console.log(`"${actionF}" not visible at first. Clicking the arrow once.`);
-      await page.locator('[class="react-film__flipper react-film__main__overlay react-film__flipper--right"]').click();
-      await page.waitForTimeout(1000);
-
-      if (await action.isVisible()) {
-        console.log(`Found after clicking: ${actionF}`);
-        await expect(action).toBeVisible();
-      } else {
-        throw new Error(`"${actionF}" not found after clicking the arrow once.`);
-      }
-    }
+    await pm.introductoryAndFinalActionsVerify().verifySuggestedActionsLists(firstActions)
   });
 
   test('Our Services verification', async ({page}) => {
@@ -109,7 +90,7 @@ test.describe('External chatbot automated tests', () => {
     expect(pricingMessage).toContainText('(+593) 99 512 1992')
     expect(pricingMessage).toContainText('info@mushroomsoft-it.com')
 
-    pm.verifyNewRequest();
+    pm.introductoryAndFinalActionsVerify().verifyNewRequestMessage()
   });
 
   test('Contact & Location interaction and validating information', async ({page}) => {
@@ -129,7 +110,7 @@ test.describe('External chatbot automated tests', () => {
     expect(pricingMessage).toContainText('+593 99 512 1992')
     expect(pricingMessage).toContainText('info@mushroomsoft-it.com')
 
-    pm.verifyNewRequest();
+    pm.introductoryAndFinalActionsVerify().verifyNewRequestMessage()
   });
 
   test('Our Team actions verification', async ({page}) => {
@@ -180,7 +161,7 @@ test.describe('External chatbot automated tests', () => {
       const whoWeAreMessageP3 = await page.locator('.webchat__bubble__content p').filter({hasText:"technology"})
       expect(whoWeAreMessageP3).toContainText('solutions')
 
-      pm.verifyNewRequest();
+      pm.introductoryAndFinalActionsVerify().verifyNewRequestMessage()
     });
 
      test('Our History', async ({page}) => {
@@ -198,9 +179,36 @@ test.describe('External chatbot automated tests', () => {
 
       const whoWeAreMessageP3 = await page.locator('.webchat__bubble__content p').filter({hasText:"technology"})
       expect(whoWeAreMessageP3).toContainText('solutions')
-      pm.verifyNewRequest();
+      pm.introductoryAndFinalActionsVerify().verifyNewRequestMessage()
     });
 
 
   
   })
+
+
+   test('First actions verification', async ({page}) => {
+    const firstActions = ['Our Services', 'Pricing', 'Contact & Location', 'Our Team', 'Who we are', 'Our History'];
+
+    for (const actionF of firstActions) {
+      console.log(`Searching: ${actionF}`);
+      const action = page.locator('.react-film__filmstrip .webchat__suggested-actions__item-box').filter({hasText: actionF});
+
+      if (await action.isVisible()) {
+        console.log(`Found (direct): ${actionF}`);
+        await expect(action).toBeVisible();
+        continue;
+      }
+
+      console.log(`"${actionF}" not visible at first. Clicking the arrow once.`);
+      await page.locator('[class="react-film__flipper react-film__main__overlay react-film__flipper--right"]').click();
+      await page.waitForTimeout(1000);
+
+      if (await action.isVisible()) {
+        console.log(`Found after clicking: ${actionF}`);
+        await expect(action).toBeVisible();
+      } else {
+        throw new Error(`"${actionF}" not found after clicking the arrow once.`);
+      }
+    }
+  });

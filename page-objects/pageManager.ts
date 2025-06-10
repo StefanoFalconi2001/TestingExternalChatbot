@@ -10,9 +10,8 @@ export class PageManager{
         this.introductoryAndFinalActionsPage = new IntroductoryAndFinalActionsPage(this.page)
     }
 
-    verifyNewRequest(){
+    introductoryAndFinalActionsVerify(){
         return this.introductoryAndFinalActionsPage
     }
-
 
 }
