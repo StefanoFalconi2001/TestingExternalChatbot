@@ -1,0 +1,24 @@
+{
+  "name": "testingexternalchatbot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:spanish": "playwright test tests/chatbot.spec.ts --grep \"Spanish\"",
+    "test:english": "playwright test tests/chatbot.spec.ts --grep \"English\"",
+    "test:api": "playwright test tests/chatbot.spec.ts --grep \"API Testing\"",
+    "test:performance": "playwright test tests/chatbot.spec.ts --grep \"Performance testing\"",
+    "test:responsive": "playwright test tests/chatbot.spec.ts --grep \"Cross-browser compatibility\"",
+    "test:chrome": "playwright test --project=chromium",
+    "test:firefox": "playwright test --project=firefox",
+    "report": "playwright show-report"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.52.0",
+    "@types/node": "^22.15.21"
+  }
+}
