@@ -99,7 +99,7 @@ test.describe('External chatbot automated tests', () => {
   });
 
   test('Pricing interaction and contacts verification', async ({page}) => {
-    const introductoryAndFinalActionsPage = new IntroductoryAndFinalActionsPage(page);
+    const pm = new PageManager(page);
     const suggestedAction = 'Pricing';
     const suggestedActionButton = page.locator('.react-film__filmstrip .webchat__suggested-actions__item-box').getByText(suggestedAction);
     await suggestedActionButton.click();
@@ -109,11 +109,11 @@ test.describe('External chatbot automated tests', () => {
     expect(pricingMessage).toContainText('(+593) 99 512 1992')
     expect(pricingMessage).toContainText('info@mushroomsoft-it.com')
 
-    await introductoryAndFinalActionsPage.verifyNewRequest();
+    pm.verifyNewRequest();
   });
 
   test('Contact & Location interaction and validating information', async ({page}) => {
-    const introductoryAndFinalActionsPage = new IntroductoryAndFinalActionsPage(page);
+    const pm = new PageManager(page);
     const suggestedAction = 'Contact & Location';
     const suggestedActionButton = page.locator('.react-film__filmstrip .webchat__suggested-actions__item-box').getByText(suggestedAction);
     await suggestedActionButton.click();
@@ -129,7 +129,7 @@ test.describe('External chatbot automated tests', () => {
     expect(pricingMessage).toContainText('+593 99 512 1992')
     expect(pricingMessage).toContainText('info@mushroomsoft-it.com')
 
-    await introductoryAndFinalActionsPage.verifyNewRequest();
+    pm.verifyNewRequest();
   });
 
   test('Our Team actions verification', async ({page}) => {
@@ -165,7 +165,7 @@ test.describe('External chatbot automated tests', () => {
   });
 
    test('Who we are interaction', async ({page}) => {
-      const introductoryAndFinalActionsPage = new IntroductoryAndFinalActionsPage(page);
+      const pm = new PageManager(page);
       const suggestedAction = 'Who we are';
       const suggestedActionButton = page.locator('.react-film__filmstrip .webchat__suggested-actions__item-box').getByText(suggestedAction);
       await suggestedActionButton.click();
@@ -180,11 +180,11 @@ test.describe('External chatbot automated tests', () => {
       const whoWeAreMessageP3 = await page.locator('.webchat__bubble__content p').filter({hasText:"technology"})
       expect(whoWeAreMessageP3).toContainText('solutions')
 
-      await introductoryAndFinalActionsPage.verifyNewRequest();
+      pm.verifyNewRequest();
     });
 
      test('Our History', async ({page}) => {
-      const introductoryAndFinalActionsPage = new IntroductoryAndFinalActionsPage(page);
+      const pm = new PageManager(page);
       const suggestedAction = 'Who we are';
       const suggestedActionButton = page.locator('.react-film__filmstrip .webchat__suggested-actions__item-box').getByText(suggestedAction);
       await suggestedActionButton.click();
@@ -198,7 +198,7 @@ test.describe('External chatbot automated tests', () => {
 
       const whoWeAreMessageP3 = await page.locator('.webchat__bubble__content p').filter({hasText:"technology"})
       expect(whoWeAreMessageP3).toContainText('solutions')
-      await introductoryAndFinalActionsPage.verifyNewRequest();
+      pm.verifyNewRequest();
     });
 
 
