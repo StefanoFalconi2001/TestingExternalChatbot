@@ -1,6 +1,6 @@
 import { test, expect, type Page } from '@playwright/test';
 
-const desiredLanguage = "Spanish"
+let desiredLanguage = "Spanish"
 test.describe('External chatbot automated tests', () => { 
 
   test.beforeEach(async ({ page }) => {
@@ -22,9 +22,7 @@ test.describe('External chatbot automated tests', () => {
   });
 
   test('Languages verification', async ({ page }) => {
-
-    const spanishButton = await page.getByRole('button').getByText('Español')
-    const englishButton = await page.getByRole('button').getByText('English')
+    
   });
 
  
