@@ -24,11 +24,11 @@ export class IntroductoryAndFinalActionsPage extends HelperBase{
   async verifySuggestedActionsLists(suggestedActionButtons: string[]) {
     for (let suggestedAction of suggestedActionButtons) {
       console.log(`Searching: ${suggestedAction}`);
-      this.actionForSuggestedActionButtons.filter({hasText: suggestedAction});
+      const action = this.actionForSuggestedActionButtons.filter({hasText: suggestedAction});
 
-      if (await this.actionForSuggestedActionButtons.isVisible()) {
+      if (await action.isVisible()) {
         console.log(`Found (direct): ${suggestedAction}`);
-        await expect(this.actionForSuggestedActionButtons).toBeVisible();
+        await expect(action).toBeVisible();
         continue;
       }
 
@@ -36,9 +36,9 @@ export class IntroductoryAndFinalActionsPage extends HelperBase{
       await this.suggestedActionsRightArrow.click();
       await this.waitForNumberOfSeconds(1)
 
-      if (await this.actionForSuggestedActionButtons.isVisible()) {
+      if (await action.isVisible()) {
         console.log(`Found after clicking: ${suggestedAction}`);
-        await expect(this.actionForSuggestedActionButtons).toBeVisible();
+        await expect(action).toBeVisible();
       } else {
         throw new Error(`"${suggestedAction}" not found after clicking the arrow once.`);
       }
