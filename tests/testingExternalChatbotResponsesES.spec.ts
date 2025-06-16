@@ -26,7 +26,7 @@ test.describe('External chatbot automated tests', () => {
   test('Languages verification', async ({ page }) => {
     const chosenLanguageMessage = await page.locator('.webchat__stacked-layout__main .webchat__bubble__content').getByText(desiredLanguage)
     expect(chosenLanguageMessage).toBeVisible()
-    const verifyingLanguageMessage = await page.locator('.webchat__bubble__content div p').filter({hasText: "MushroomSoft"})
+    const verifyingLanguageMessage = await page.locator('.webchat__bubble__content p').filter({hasText: "Hola"})
     expect(verifyingLanguageMessage).toContainText('asistente')
     expect(verifyingLanguageMessage).toContainText('sobre')
   });
