@@ -2,14 +2,12 @@ import { expect, type Locator, type Page } from '@playwright/test';
 import { HelperBase } from "./helperBase";
 
 export class IntroductoryAndFinalActionsPageEN extends HelperBase{
-  readonly page: Page;
   readonly newRequestMessage: Locator;
   readonly actionForSuggestedActionButtons: Locator;
   readonly suggestedActionsRightArrow: Locator;
 
   constructor(page: Page) {
     super(page)
-    this.page = page;
     this.newRequestMessage = page.locator('.webchat__bubble__content p').filter({hasText: `Is there anything else you’d like to know?`});
     this.actionForSuggestedActionButtons = page.locator('.react-film__filmstrip .webchat__suggested-actions__item-box');
     this.suggestedActionsRightArrow = page.locator('[class="react-film__flipper react-film__main__overlay react-film__flipper--right"]');
