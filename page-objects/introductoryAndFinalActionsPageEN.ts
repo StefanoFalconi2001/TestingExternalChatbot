@@ -3,9 +3,7 @@ import { HelperBase } from "./helperBase";
 
 export class IntroductoryAndFinalActionsPageEN extends HelperBase{
   readonly page: Page;
-  readonly getStartedLink: Locator;
   readonly newRequestMessage: Locator;
-  readonly suggestedIntroductoryActionsButtons: Locator;
   readonly actionForSuggestedActionButtons: Locator;
   readonly suggestedActionsRightArrow: Locator;
 
