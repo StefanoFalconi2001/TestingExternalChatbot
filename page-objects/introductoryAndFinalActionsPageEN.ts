@@ -1,7 +1,7 @@
 import { expect, type Locator, type Page } from '@playwright/test';
 import { HelperBase } from "./helperBase";
 
-export class IntroductoryAndFinalActionsPage extends HelperBase{
+export class IntroductoryAndFinalActionsPageEN extends HelperBase{
   readonly page: Page;
   readonly getStartedLink: Locator;
   readonly newRequestMessage: Locator;
@@ -17,11 +17,11 @@ export class IntroductoryAndFinalActionsPage extends HelperBase{
     this.suggestedActionsRightArrow = page.locator('[class="react-film__flipper react-film__main__overlay react-film__flipper--right"]');
   }
 
-  async verifyNewRequestMessage(){
+  async verifyNewRequestMessageEN(){
         expect(this.newRequestMessage).toBeVisible();
     }
 
-  async verifySuggestedActionsLists(suggestedActionButtons: string[]) {
+  async verifySuggestedActionsListsEN(suggestedActionButtons: string[]) {
     for (let suggestedAction of suggestedActionButtons) {
       console.log(`Searching: ${suggestedAction}`);
       const action = this.actionForSuggestedActionButtons.filter({hasText: suggestedAction});

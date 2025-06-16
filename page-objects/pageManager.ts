@@ -1,17 +1,24 @@
 import { Page, expect } from '@playwright/test';
-import { IntroductoryAndFinalActionsPage } from './introductoryAndFinalActionsPage';
+import { IntroductoryAndFinalActionsPageEN } from './introductoryAndFinalActionsPageEN';
+import { IntroductoryAndFinalActionsPageES } from './introductoryAndFinalActionsPageES';
 
 
 export class PageManager{
     private readonly page : Page
-    private readonly introductoryAndFinalActionsPage: IntroductoryAndFinalActionsPage
+    private readonly introductoryAndFinalActionsPageEN: IntroductoryAndFinalActionsPageEN
+    private readonly introductoryAndFinalActionsPageES: IntroductoryAndFinalActionsPageES
 
     constructor(page: Page){
         this.page = page
-        this.introductoryAndFinalActionsPage = new IntroductoryAndFinalActionsPage(this.page)
+        this.introductoryAndFinalActionsPageEN = new IntroductoryAndFinalActionsPageEN(this.page)
+        this.introductoryAndFinalActionsPageES = new IntroductoryAndFinalActionsPageES(this.page)
     }
 
-    introductoryAndFinalActionsVerify(){
-        return this.introductoryAndFinalActionsPage
+    introductoryAndFinalActionsVerifyEN(){
+        return this.introductoryAndFinalActionsPageEN
+    }
+
+    introductoryAndFinalActionsVerifyES(){
+        return this.introductoryAndFinalActionsPageES
     }
 }
