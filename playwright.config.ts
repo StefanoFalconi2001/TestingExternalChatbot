@@ -12,7 +12,7 @@ export default defineConfig({
   reporter: 'html',
   timeout: 60000,
   use: {
-    trace: 'on',
+    trace: 'off',
   },
   projects: [
     {
