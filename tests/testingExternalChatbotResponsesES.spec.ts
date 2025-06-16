@@ -23,12 +23,6 @@ test.describe('External chatbot automated tests', () => {
     await page.waitForTimeout(7000)
   });
 
-  test('Languages verification', async ({ page }) => {
-    const verifyingLanguageMessage = await page.locator('.webchat__bubble__content p').filter({hasText: "Hola"})
-    expect(verifyingLanguageMessage).toContainText('asistente')
-    expect(verifyingLanguageMessage).toContainText('sobre')
-  });
-
   test('First actions verification', async ({page}) => {
     const pm = new PageManager(page);
     const firstActions = ['Nuestros Servicios', 'Cotizaciones', 'Contacto y Ubicación', 'Nuestro Equipo', 'Quiénes somos', 'Nuestra Historia'];

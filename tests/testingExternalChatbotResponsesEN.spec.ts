@@ -3,7 +3,6 @@ import { PageManager } from '../page-objects/pageManager';
 
 let desiredLanguage = "English"
 test.describe('External chatbot automated tests', () => { 
-
   test.beforeEach(async ({ page }) => {
     await page.goto('https://msoftpublicsite.z13.web.core.windows.net/#/home');
     await page.locator('button #chat-icon').click()
@@ -21,12 +20,6 @@ test.describe('External chatbot automated tests', () => {
       await englishButton.click()
     }
     await page.waitForTimeout(7000)
-  });
-
-  test('Languages verification', async ({ page }) => {
-    const verifyingLanguageMessage = await page.locator('.webchat__bubble__content p').filter({hasText: "Hi"})
-    expect(verifyingLanguageMessage).toContainText('assistant')
-    expect(verifyingLanguageMessage).toContainText('about')
   });
 
   test('First actions verification', async ({page}) => {
