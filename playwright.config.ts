@@ -1,5 +1,4 @@
 import { defineConfig, devices } from '@playwright/test';
-import { on } from 'events';
 
 const isCI = process.env["CI"]
 
